@@ -41,3 +41,25 @@ DEEPGRAM_API_KEY=<your-deepgram-key>
 
 Now you can run `npm run render`, which will execute `src/render.ts`.
 
+
+## Animating Subtitles
+
+This project has a heavy emphasis on animating subtitles. It provides the option to stream subtitles word-by-word, to highlight the currently spoken word, or to let words fade into the image as they appear. To play around with the different caption animation options, you can modify the `textSettings` object in `src/scenes/example.tsx`:
+
+```ts
+const textSettings: captionSettings = {
+  fontSize: 80,
+  numSimultaneousWords: 4, // how many words are shown at most simultaneously
+  textColor: "white",
+  fontWeight: 800,
+  fontFamily: "Mulish",
+  stream: false, // if true, words appear one by one
+  textAlign: "center",
+  textBoxWidthInPercent: 70,
+  fadeInAnimation: true,
+  currentWordColor: "cyan",
+  currentWordBackgroundColor: "red", // adds a colored box to the word currently spoken
+  shadowColor: "black",
+  shadowBlur: 30
+}
+```
