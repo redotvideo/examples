@@ -1,0 +1,23 @@
+{
+  "name": "stitching-videos",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build",
+    "render": "tsc && node dist/render.js"
+  },
+  "dependencies": {
+    "@revideo/core": "0.3.1",
+    "@revideo/2d": "0.3.1",
+    "@revideo/renderer": "0.3.1",
+    "@revideo/vite-plugin": "0.3.1",
+    "@revideo/ffmpeg": "0.3.1"
+  },
+  "devDependencies": {
+    "@revideo/ui": "0.3.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.5"
+  }
+}
