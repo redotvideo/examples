@@ -1,0 +1,28 @@
+{
+  "name": "google-cloud-run",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "tsc && node dist/index.js",
+    "build": "tsc && vite build",
+    "render": "tsc && node dist/render.js"
+  },
+  "dependencies": {
+    "@revideo/2d": "0.3.3",
+    "@revideo/core": "0.3.3",
+    "@revideo/ffmpeg": "0.3.3",
+    "@revideo/renderer": "0.3.3",
+    "@revideo/vite-plugin": "0.3.3",
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@revideo/cli": "^0.3.3",
+    "@revideo/ui": "0.3.3",
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^9.0.8",
+    "typescript": "^5.2.2",
+    "vite": "^4.5"
+  }
+}
