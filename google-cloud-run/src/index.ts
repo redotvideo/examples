@@ -17,7 +17,7 @@ app.post('/render', async (req, res) => {
     const jobId = uuidv4();
 
     console.log("Rendering video...")
-    await renderVideo("./vite.config.ts", variables, () => {}, { name: jobId, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
+    await renderVideo("./vite.config.ts", variables, () => {}, { name: jobId, logProgress: true, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
     console.log("Finished rendering")
 
     const outputFilePath = path.join(process.cwd(), `./output/${jobId}.mp4`);
