@@ -1,3 +1,14 @@
+<br/>
+<p align="center">
+  <a href="https://re.video">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./logo_dark.svg">
+      <img width="360" alt="Revideo logo" src="./logo.svg">
+    </picture>
+  </a>
+</p>
+
+
 # Revideo Code Examples
 
 This repository contains example projects built with [Revideo](https://github.com/redotvideo/revideo). If you prefer to learn by looking at code examples rather than reading through docs, this is a great place to get started with Revideo. All the individual project folders have a README - below you can find a quick summary of all projects.
