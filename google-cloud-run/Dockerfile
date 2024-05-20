@@ -31,6 +31,8 @@ RUN mv ffmpeg /usr/local/bin/
 
 ENV FFMPEG_PATH=ffmpeg
 
+ENV FFPROBE_PATH=ffprobe
+
 COPY package*.json ./
 
 COPY . ./
