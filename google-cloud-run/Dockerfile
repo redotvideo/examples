@@ -31,6 +31,14 @@ RUN mv ffmpeg /usr/local/bin/
 
 ENV FFMPEG_PATH=ffmpeg
 
+RUN wget https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffprobe-linux-x64
+
+RUN chmod +x ffprobe-linux-x64
+
+RUN mv ffprobe-linux-x64 ffprobe
+
+RUN mv ffprobe /usr/local/bin/
+
 ENV FFPROBE_PATH=ffprobe
 
 COPY package*.json ./
