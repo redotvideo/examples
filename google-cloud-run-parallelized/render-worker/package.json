@@ -1,0 +1,30 @@
+{
+  "main": "dist/index.js",
+  "scripts": {
+    "editor": "vite",
+    "build": "tsc",
+    "start": "functions-framework --target=TypescriptFunction",
+    "prestart": "npm run build",
+    "gcp-build": "node node_modules/puppeteer/install.mjs && npm run build"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
+    "@google-cloud/functions-framework": "^3.4.0",
+    "@google-cloud/storage": "^7.11.0",
+    "@revideo/2d": "0.3.4",
+    "@revideo/cli": "^0.3.4",
+    "@revideo/core": "0.3.4",
+    "@revideo/ffmpeg": "0.3.4",
+    "@revideo/renderer": "0.3.4",
+    "@revideo/ui": "0.3.4",
+    "@revideo/vite-plugin": "0.3.4",
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^9.0.8",
+    "express": "^4.19.2",
+    "puppeteer": "^22.9.0",
+    "typescript": "^5.2.2",
+    "uuid": "^9.0.1",
+    "vite": "^4.5"
+  }
+}
