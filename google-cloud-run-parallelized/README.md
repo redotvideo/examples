@@ -59,11 +59,12 @@ To deploy the render worker cloud function, navigate to `/render-worker` and run
 gcloud functions deploy render-worker \
 --runtime nodejs22 \
 --trigger-http \
+--allow-unauthenticated \
 --gen2 \
 --memory 4Gi \
 --cpu 2 \
 --concurrency=1 \
---set-env-vars=[FFMPEG_PATH=ffmpeg, FFPROBE_PATH=ffprobe, GCP_BUCKET_NAME=<your-bucket-name>]
+--set-env-vars=FFMPEG_PATH=ffmpeg,FFPROBE_PATH=ffprobe,GCP_BUCKET_NAME=<your-bucket-name>
 ```
 
 Once your cloud function is deployed, its URL will be logged to the terminal (we will reference it as `<your-render-function-url>`). You will need this URL to configure your cloud run service that calls the cloud function you just deployed.
@@ -81,5 +82,5 @@ gcloud run deploy revideo-cloudrun-example \
 --cpu 4 \
 --allow-unauthenticated \
 --concurrency=1
---set-env-vars=[FFMPEG_PATH=ffmpeg, FFPROBE_PATH=ffprobe, GCP_BUCKET_NAME=<your-bucket-name>, RENDER_WORKER_URL=<your-render-function-url>]
+--set-env-vars=FFMPEG_PATH=ffmpeg,FFPROBE_PATH=ffprobe,GCP_BUCKET_NAME=<your-bucket-name>,RENDER_WORKER_URL=<your-render-function-url>
 ```
