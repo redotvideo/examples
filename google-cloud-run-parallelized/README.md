@@ -12,7 +12,7 @@ We are going to deploy two services to Google Cloud:
 
 To get started, clone the `revideo-examples` repository and navigate to the `google-cloud-run-parallelized` directory.
 
-#### Enable gcloud services
+### Enable gcloud services
 
 To set up your Google Cloud services, ensure that you have the gcloud CLI installed ([guide](https://cloud.google.com/sdk/docs/install)). Then, enable the required services to deploy Cloud Functions:
 
@@ -23,7 +23,7 @@ gcloud services enable storage.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
 ```
 
-#### Create Storage Bucket
+### Create Storage Bucket
 
 You'll need a storage bucket to save your videos as well as partial videos to. To create one, run the following command and replace `<your-region>` with your desired region (e.g. `us-east1`):
 
@@ -59,7 +59,7 @@ gsutil cors set cors_config.json gs://<your-bucket-name>/
 Now you can deploy your render worker cloud function.
 
 
-#### Deploy Cloud Function
+### Deploy Render Worker Cloud Function
 
 To deploy the render worker cloud function, navigate to `/render-worker` and run `npm install`. Now run the following command:
 
@@ -81,7 +81,7 @@ gcloud functions deploy render-worker \
 You'll now have to wait some time for the deployment. Once your cloud function is deployed, its URL will be logged to the terminal (we will reference it as `<your-render-function-url>`). You will need this URL to configure your cloud run service that calls the cloud function you just deployed.
 
 
-#### Deploy Cloud Run Service
+### Deploy Render Orchestrator Cloud Run Service
 
 To deploy the services that orchestrates the cloud functions, navigate to `/render-orchestrator` and run the following command:
 
