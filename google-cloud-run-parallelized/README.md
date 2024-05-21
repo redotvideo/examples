@@ -1,8 +1,8 @@
 # Parallel Rendering with Cloud Functions
 
-This project shows you how you can parallelize rendering across multiple Google Cloud functions to get much faster rendering speeds. Instead of rendering, say, 60 seconds of video in one process, we can also use 30 cloud functions to render 2s of video each, and afterwards stitch together the resulting partial videos. This is what we do in this project.
+This project shows you how you can parallelize rendering across multiple Google Cloud functions to get much faster rendering speeds. Instead of rendering, say, 60 seconds of video in one process, we can also use 30 cloud functions to render 2s of video each, and afterwards stitch together the resulting partial videos.
 
-We are going to deploy two services to Google Cloud:
+In this example, we are going to deploy two services to Google Cloud:
 
 - `/render-worker`: This is a Google Cloud Function that is responsible for rendering a partial video. It has access to your video template (`/render-worker/src/scenes`) and receives the number of total workers as well as its worker ID as an input. It accordingly exports the audio and visuals of the partial video.
   
@@ -111,3 +111,11 @@ curl -X POST <your-render-orchestrator-url>/render \
 ```
 
 You can check out the logs and rendering progress in the Google Cloud Function logs.
+
+
+### Notes
+
+Some useful information, as well as considerations on what parameters to use:
+
+- Parallel rendering is especially effective for longer videos (>1 min). For short videos, the overhead of waiting for a bunch of cloud functions to cold boot may not be worth it
+- Depending on the length of the video you're going to render, you might want to adjust the `numWorkers` parameter. A single worker should not render less than a second of video
