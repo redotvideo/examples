@@ -87,13 +87,27 @@ You'll now have to wait some time for the deployment. Once your cloud function i
 To deploy the service that orchestrates the cloud functions, navigate to `/render-orchestrator`, then run `npm install` and the following command:
 
 ```
-gcloud run deploy revideo-cloudrun-example \
+gcloud run deploy render-orchestrator \
 --source . \
---region europe-west2 \
 --memory 8Gi \
 --cpu 4 \
 --allow-unauthenticated \
 --concurrency=1 \
 --timeout=3600s \
+--region <your-region> \
 --set-env-vars=FFMPEG_PATH=ffmpeg,FFPROBE_PATH=ffprobe,GCP_BUCKET_NAME=<your-bucket-name>,RENDER_WORKER_URL=<your-render-function-url>
 ```
+
+Again, you'll have to wait a bit for the service to be deployed. Once that is done, you can send a request to its url `<your-render-orchestrator-url>`.
+
+### Sending a Request
+
+Once the render worker and orchestrator are running, you can send a render request as follows:
+
+```
+curl -X POST <your-render-orchestrator-url>/render \
+-H "Content-Type: application/json" \
+-d '{"variables": {"username": "John"}, "numWorkers": 10}'
+```
+
+You can check out the logs and rendering progress in the Google Cloud Function logs.
