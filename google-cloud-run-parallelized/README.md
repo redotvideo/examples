@@ -83,7 +83,7 @@ You'll now have to wait some time for the deployment. Once your cloud function i
 
 ### Deploy Render Orchestrator Cloud Run Service
 
-To deploy the services that orchestrates the cloud functions, navigate to `/render-orchestrator` and run the following command:
+To deploy the service that orchestrates the cloud functions, navigate to `/render-orchestrator`, then run `npm install` and the following command:
 
 ```
 gcloud run deploy revideo-cloudrun-example \
