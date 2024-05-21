@@ -74,7 +74,8 @@ gcloud functions deploy render-worker \
 --memory 4Gi \
 --cpu 2 \
 --concurrency=1 \
---region=<your-region>
+--timeout=3600s \
+--region=<your-region> \
 --set-env-vars=FFMPEG_PATH=ffmpeg,FFPROBE_PATH=ffprobe,GCP_BUCKET_NAME=<your-bucket-name>
 ```
 
@@ -92,6 +93,7 @@ gcloud run deploy revideo-cloudrun-example \
 --memory 8Gi \
 --cpu 4 \
 --allow-unauthenticated \
---concurrency=1
+--concurrency=1 \
+--timeout=3600s \
 --set-env-vars=FFMPEG_PATH=ffmpeg,FFPROBE_PATH=ffprobe,GCP_BUCKET_NAME=<your-bucket-name>,RENDER_WORKER_URL=<your-render-function-url>
 ```
