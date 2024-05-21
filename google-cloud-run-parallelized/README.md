@@ -107,15 +107,21 @@ Once the render worker and orchestrator are running, you can send a render reque
 ```
 curl -X POST <your-render-orchestrator-url>/render \
 -H "Content-Type: application/json" \
--d '{"variables": {"username": "John"}, "numWorkers": 10}'
+-d '{"variables": {"username": "John"}, "numWorkers": 5}'
 ```
 
-You can check out the logs and rendering progress in the Google Cloud Function logs.
+This will distribute the rendering work across five cloud functions. You can check out the logs and rendering progress in the Google Cloud Function logs.
 
 
-### Notes
+## Usage Notes
 
 Some useful information, as well as considerations on what parameters to use:
 
-- Parallel rendering is especially effective for longer videos (>1 min). For short videos, the overhead of waiting for a bunch of cloud functions to cold boot may not be worth it
-- Depending on the length of the video you're going to render, you might want to adjust the `numWorkers` parameter. A single worker should not render less than a second of video
+**Cold Start times:**
+Depending on your previous usage, your Google Cloud account & project might not be prioritized for cold start times, and thus the bottleneck of your render speeds might be cold start tiems. You can check the logs of your render worker function to see how fast the render workers spin up after sending the request. For example, we have noticed that after creating a new Google Cloud project, we sometimes had to wait for 30s+ for a render worker to spin up, whereas cold start times were very fast on a project that we had been using for a lot of time already.
+
+**Video Duration:**
+Parallel rendering is especially effective for longer videos (>1 min). For short videos, the overhead of waiting for a bunch of cloud functions to cold boot may not be worth it
+
+**Choosing the number of workers:**
+Depending on the length of the video you're going to render, you might want to adjust the `numWorkers` parameter. A single worker should not render less than a second of video
