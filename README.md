@@ -17,6 +17,8 @@ This repository contains example projects built with [Revideo](https://github.co
 
 Below you can find a list of Revideo projects along with a quick summary, focused on teaching different aspects (deployment, animations, etc.). All the individual project folders have a README to help you get started.
 
+- **Default Project:** This is a simple project that demonstrates the basic structure of a Revideo project. It includes an audio file and a background video - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/default))
+
 ### Animations
 
 - **Transparent AI avatar with background image:** This is a very simple example of a video of an AI avatar speaking with a background image. It is mainly meant to demonstrate how to use transparent videos in Revideo ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/avatar-with-background))
