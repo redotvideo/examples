@@ -7,12 +7,12 @@ export default makeScene2D(function* (view) {
   yield view.add(
     <>
       <Video
-        src={'https://storage.googleapis.com/revideo-cloud-bucket/beach-3 (1).mp4'}
+        src={'https://revideo-example-assets.s3.amazonaws.com/beach-3.mp4'}
         size={['100%', '100%']}
         play={true}
       />
       <Audio
-        src={'https://storage.googleapis.com/revideo-cloud-bucket/chill-beat-re.mp3'}
+        src={'https://revideo-example-assets.s3.amazonaws.com/chill-beat.mp3'}
         play={true}
         time={17.0}
       />
@@ -26,5 +26,5 @@ export default makeScene2D(function* (view) {
   );
 
   yield* textRef().scale(10, 1);
-  yield* waitFor(58+120);
+  yield* waitFor(30);
 });

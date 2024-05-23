@@ -11,10 +11,15 @@
 
 # Revideo Code Examples
 
-This repository contains example projects built with [Revideo](https://github.com/redotvideo/revideo). If you prefer to learn by looking at code examples rather than reading through docs, this is a great place to get started with Revideo. All the individual project folders have a README - below you can find a quick summary of all projects.
+This repository contains example projects built with [Revideo](https://github.com/redotvideo/revideo). If you prefer to learn by looking at code examples rather than reading through docs, this is a great place to get started with Revideo.
 
+## List of Projects
 
-### List of Projects
+Below you can find a list of Revideo projects along with a quick summary, focused on teaching different aspects (deployment, animations, etc.). All the individual project folders have a README to help you get started.
+
+- **Default Project:** This is a simple project that demonstrates the basic structure of a Revideo project. It includes an audio file and a background video - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/default))
+
+### Animations
 
 - **Transparent AI avatar with background image:** This is a very simple example of a video of an AI avatar speaking with a background image. It is mainly meant to demonstrate how to use transparent videos in Revideo ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/avatar-with-background))
 
@@ -22,4 +27,9 @@ This repository contains example projects built with [Revideo](https://github.co
 
 - **Youtube shorts with animated subtitles:** This example project generates Youtube Shorts with AI. It generates scripts with ChatGPT, voiceovers with Elevenlabs, and background images with Dall-E. **This project has a heavy emphasis on animating subtitles** - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
 
+
+### Deployment
+
 - **Revideo on Google Cloud Run:** This example project shows you how you can deploy a Revideo Project on Google Cloud Run for Rendering - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/google-cloud-run))
+
+- **Parallelized Rendering with Cloud Functions:** This example project also uses Cloud Run, but enables faster rendering by distributing the rendering work across a large number of cloud functions - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/google-cloud-run-parallelized))
