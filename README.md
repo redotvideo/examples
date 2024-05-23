@@ -23,6 +23,8 @@ Below you can find a list of Revideo projects along with a quick summary, focuse
 
 - **Transparent AI avatar with background image:** This is a very simple example of a video of an AI avatar speaking with a background image. It is mainly meant to demonstrate how to use transparent videos in Revideo ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/avatar-with-background))
 
+- **Marketing Templates**: A template for a post on social media advertising black friday discounts. ([project folder](https://github.com/redotvideo/examples/tree/main/marketing-templates)
+
 - **Stitching together videos:** This is a simple project that demonstrates how you can append videos one after another. It also includes an animation for a transition between videos - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/stitching-videos))
 
 - **Youtube shorts with animated subtitles:** This example project generates Youtube Shorts with AI. It generates scripts with ChatGPT, voiceovers with Elevenlabs, and background images with Dall-E. **This project has a heavy emphasis on animating subtitles** - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
