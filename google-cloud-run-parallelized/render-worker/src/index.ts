@@ -1,5 +1,5 @@
 import * as ff from '@google-cloud/functions-framework';
-import { renderPartial } from '@revideo/renderer';
+import { renderPartialVideo } from '@revideo/renderer';
 import { Storage } from '@google-cloud/storage';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs';
@@ -12,7 +12,7 @@ ff.http('render-worker', async (req: ff.Request, res: ff.Response) => {
         const jobId = uuidv4();
             
         console.log("Rendering video...")
-        const {audioFile, videoFile} = await renderPartial("./vite.config.ts", workerId, numWorkers, variables, () => {}, { name: jobId, logProgress: true, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
+        const {audioFile, videoFile} = await renderPartialVideo("./vite.config.ts", workerId, numWorkers, variables, () => {}, { name: jobId, logProgress: true, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
         
         const audioFileName = `${jobId}-audio.mp3`;
         const audioFileBuffer = fs.readFileSync(audioFile);
