@@ -5,5 +5,5 @@ import './global.css';
 import example from './scenes/example?scene';
 
 export default makeProject({
-  scenes: [example],
+	scenes: [example],
 });
