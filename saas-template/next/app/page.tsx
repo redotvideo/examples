@@ -41,6 +41,12 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
+  /**
+   * Get information about the repository from Github.
+   * @param repoName
+   * @param key
+   * @returns
+   */
   async function fetchInformation(
     repoName: `${string}/${string}`,
     key: string,
@@ -63,8 +69,10 @@ export default function Home() {
     setRepoImage(response.repoImage);
   }
 
+  /**
+   * Render the video.
+   */
   async function render() {
-    console.log('Rendering');
     const res = await fetch('/api/render', {
       method: 'POST',
       headers: {
@@ -79,7 +87,6 @@ export default function Home() {
         streamProgress: true,
       }),
     }).catch(e => console.log(e));
-    console.log('Response', res);
 
     if (!res) {
       return;
