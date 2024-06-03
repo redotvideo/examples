@@ -76,8 +76,9 @@ export default makeScene2D(function* (view) {
         layout
         alignItems={'center'}
         gap={40}
-        x={-600}
+        x={-870}
         y={-400}
+        offset={[-1, 0]}
       >
         <Img
           src={repoImage()}
@@ -116,6 +117,7 @@ export default makeScene2D(function* (view) {
     rectRef().fill('#000000', 2),
     outerLayoutRef().x(0, 2),
     outerLayoutRef().y(-50, 2),
+    outerLayoutRef().offset([0, 0], 2),
   );
 
   // Add text with the total number of stars

@@ -1,22 +1,19 @@
 const RENDER_URL = 'http://localhost:4000/render';
 
-async function getResponse(params: Record<string, string>) {
+async function getResponse(body: string) {
   return await fetch(RENDER_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      params,
-    }),
+    body,
   });
 }
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const params: Record<string, string> = body.params;
 
-  const response = await getResponse(params);
+  const response = await getResponse(JSON.stringify(body));
   if (!response.ok) {
     return new Response('Failed to render', {status: 500});
   }

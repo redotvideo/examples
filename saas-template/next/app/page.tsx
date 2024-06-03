@@ -4,6 +4,7 @@ import {Player} from '@revideo/player-react';
 import {getGithubRepositoryInfo} from './actions';
 import {useState} from 'react';
 import {LoaderCircle} from 'lucide-react';
+import {parseStream} from '../utils/parse';
 
 const exampleData = [
   0, 105826000, 265664000, 265671000, 265684000, 265689000, 265694000,
@@ -91,6 +92,9 @@ export default function Home() {
   const [key, setKey] = useState('');
   const [error, setError] = useState<string | null>();
 
+  const [progress, setProgress] = useState(0);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+
   async function fetchInformation(
     repoName: `${string}/${string}`,
     key: string,
@@ -111,6 +115,34 @@ export default function Home() {
 
     setStargazerTimes(response.stargazerTimes);
     setRepoImage(response.repoImage);
+  }
+
+  async function render() {
+    console.log('Rendering');
+    const res = await fetch('/api/render', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        variables: {
+          data: stargazerTimes,
+          repoName: repoName,
+          repoImage: repoImage,
+        },
+        streamProgress: true,
+      }),
+    }).catch(e => console.log(e));
+    console.log('Response', res);
+
+    if (!res) {
+      return;
+    }
+
+    const downloadUrl = await parseStream(res.body!.getReader(), p =>
+      setProgress(p),
+    );
+    setDownloadUrl(downloadUrl);
   }
 
   return (
@@ -181,17 +213,27 @@ export default function Home() {
           {/* Progress bar */}
           <div className="text-sm flex-1 bg-gray-100 rounded-md overflow-hidden">
             <div
-              className="text-gray-600 bg-gray-400 h-full flex items-center px-4"
+              className="text-gray-600 bg-gray-400 h-full flex items-center px-4 transition-all transition-200"
               style={{
-                width: `${20}%`,
+                width: `${Math.round(progress * 100)}%`,
               }}
             >
-              20%
+              {Math.round(progress * 100)}%
             </div>
           </div>
-          <Button onClick={() => {}} loading={false}>
-            Render video
-          </Button>
+          {downloadUrl ? (
+            <a
+              href={downloadUrl}
+              download
+              className="text-sm flex items-center gap-x-2 rounded-md p-2 bg-green-200 text-gray-700 hover:bg-gray-300"
+            >
+              Download video
+            </a>
+          ) : (
+            <Button onClick={() => render()} loading={false}>
+              Render video
+            </Button>
+          )}
         </div>
       </div>
     </>
