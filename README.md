@@ -17,6 +17,8 @@ This repository contains example projects built with [Revideo](https://github.co
 
 Below you can find a list of Revideo projects along with a quick summary, focused on teaching different aspects (deployment, animations, etc.). All the individual project folders have a README to help you get started.
 
+- **SaaS Template (Default Project + NextJS):** This is a NextJS project that demonstrates how to include Revideo in a SaaS application. If this is your first time using Revideo, this is probably what you're looking for. - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/saas-template))
+
 - **Default Project:** This is a simple project that demonstrates the basic structure of a Revideo project. It includes an audio file and a background video - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/default))
 
 ### Animations
