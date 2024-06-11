@@ -140,7 +140,7 @@ export default function Home() {
 					<div className="rounded-lg overflow-hidden">
 						{/* You can find the scene code inside revideo/src/scenes/example.tsx */}
 						<Player
-							src="http://localhost:4000/player/project.js"
+							src="http://localhost:4000/player/"
 							controls={true}
 							variables={{
 								data: stargazerTimes.length > 0 ? stargazerTimes : undefined,
