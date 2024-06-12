@@ -5,7 +5,7 @@ async function render() {
 
 	// This is the main function that renders the video
 	const file = await renderVideo({
-		projectFile: './vite.config.ts', 
+		projectFile: './src/project.ts', 
 		settings: { logProgress: true }
 	});
 
