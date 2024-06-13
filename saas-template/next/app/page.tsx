@@ -75,9 +75,9 @@ export default function Home() {
 			},
 			body: JSON.stringify({
 				variables: {
-					data: stargazerTimes,
-					repoName: repoName,
-					repoImage: repoImage,
+					data: stargazerTimes.length ? stargazerTimes : undefined,
+					repoName: repoName || undefined,
+					repoImage: repoImage || undefined,
 				},
 				streamProgress: true,
 			}),
