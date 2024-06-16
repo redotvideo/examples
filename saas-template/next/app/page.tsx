@@ -19,6 +19,7 @@ function Button({
 		<button
 			className="text-sm flex items-center gap-x-2 rounded-md p-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
 			onClick={() => onClick()}
+			disabled={loading}
 		>
 			{loading && <LoaderCircle className="animate-spin h-4 w-4 text-gray-700" />}
 			{children}
@@ -31,11 +32,12 @@ export default function Home() {
 	const [repoImage, setRepoImage] = useState<string | null>();
 	const [stargazerTimes, setStargazerTimes] = useState<number[]>([]);
 
-	const [loading, setLoading] = useState(false);
+	const [githubLoading, setGithubLoading] = useState(false);
 	const [needsKey, setNeedsKey] = useState(false);
 	const [key, setKey] = useState('');
 	const [error, setError] = useState<string | null>();
 
+	const [renderLoading, setRenderLoading] = useState(false);
 	const [progress, setProgress] = useState(0);
 	const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
@@ -46,9 +48,9 @@ export default function Home() {
 	 * @returns
 	 */
 	async function fetchInformation(repoName: `${string}/${string}`, key: string) {
-		setLoading(true);
+		setGithubLoading(true);
 		const response = await getGithubRepositoryInfo(repoName, key ?? undefined);
-		setLoading(false);
+		setGithubLoading(false);
 
 		if (response.status === 'rate-limit') {
 			setNeedsKey(true);
@@ -68,6 +70,7 @@ export default function Home() {
 	 * Render the video.
 	 */
 	async function render() {
+		setRenderLoading(true);
 		const res = await fetch('/api/render', {
 			method: 'POST',
 			headers: {
@@ -84,10 +87,12 @@ export default function Home() {
 		}).catch((e) => console.log(e));
 
 		if (!res) {
+			alert('Failed to render video.');
 			return;
 		}
 
 		const downloadUrl = await parseStream(res.body!.getReader(), (p) => setProgress(p));
+		setRenderLoading(false);
 		setDownloadUrl(downloadUrl);
 	}
 
@@ -105,7 +110,7 @@ export default function Home() {
 						/>
 						{!needsKey && (
 							<Button
-								loading={loading}
+								loading={githubLoading}
 								onClick={() => fetchInformation(repoName as `${string}/${string}`, key)}
 							>
 								Fetch information
@@ -127,7 +132,7 @@ export default function Home() {
 								onChange={(e) => setKey(e.target.value)}
 							/>
 							<Button
-								loading={loading}
+								loading={githubLoading}
 								onClick={() => fetchInformation(repoName as `${string}/${string}`, key)}
 							>
 								Fetch information
@@ -171,7 +176,7 @@ export default function Home() {
 							Download video
 						</a>
 					) : (
-						<Button onClick={() => render()} loading={false}>
+						<Button onClick={() => render()} loading={renderLoading}>
 							Render video
 						</Button>
 					)}
