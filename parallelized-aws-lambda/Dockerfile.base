@@ -1,0 +1,64 @@
+   FROM public.ecr.aws/lambda/nodejs:18
+
+   RUN yum update -y && yum install -y \
+    nscd \
+    libnss3 \
+    libdbus-1-3 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libasound2 \
+    libatspi2.0-0 \
+    libxfixes3
+
+   RUN yum update -y && yum install -y \
+    alsa-lib \
+    at-spi2-atk \
+    atk \
+    cups-libs \
+    gtk3 \
+    ipa-gothic-fonts \
+    libXcomposite \
+    libXcursor \
+    libXdamage \
+    libXext \
+    libXi \
+    libXrandr \
+    libXScrnSaver \
+    libXtst \
+    pango \
+    xorg-x11-fonts-100dpi \
+    xorg-x11-fonts-75dpi \
+    xorg-x11-fonts-cyrillic \
+    xorg-x11-fonts-misc \
+    xorg-x11-fonts-Type1 \
+    xorg-x11-utils \
+    nss \
+    libX11 \
+    GConf2 \
+    dbus-glib \
+    dbus-libs \
+    libXrender \
+    libxcb \
+    libdrm \
+    libxshmfence \
+    mesa-libgbm \
+    libatk \
+    libxkbcommon 
+
+   RUN curl -L https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffprobe-linux-x64 -o ffprobe-linux-x64
+
+   RUN chmod +x ffprobe-linux-x64
+
+   RUN mv ffprobe-linux-x64 ffprobe
+
+   RUN mv ffprobe /usr/local/bin/
+
+   ENV FFPROBE_PATH=ffprobe
