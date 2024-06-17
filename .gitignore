@@ -5,3 +5,4 @@ dist
 !public/.gitkeep
 output
 .DS_store
+.cache
