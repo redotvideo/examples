@@ -1,0 +1,24 @@
+{
+  "name": "github-stars-celebration",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build",
+    "render": "tsc && node dist/render.js"
+  },
+  "dependencies": {
+    "@revideo/core": "^0.4.2",
+    "@revideo/2d": "^0.4.2",
+    "@revideo/renderer": "^0.4.2",
+    "@revideo/vite-plugin": "^0.4.2",
+    "@revideo/ffmpeg": "^0.4.2"
+  },
+  "devDependencies": {
+    "@revideo/ui": "^0.4.2",
+    "@revideo/cli": "^0.4.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.5"
+  }
+}
