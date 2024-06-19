@@ -12,7 +12,13 @@ ff.http('render-worker', async (req: ff.Request, res: ff.Response) => {
         const jobId = uuidv4();
             
         console.log("Rendering video...")
-        const {audioFile, videoFile} = await renderPartialVideo("./vite.config.ts", workerId, numWorkers, variables, () => {}, { name: jobId, logProgress: true, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }});
+        const {audioFile, videoFile} = await renderPartialVideo({
+          projectFile: "./src/project.ts", 
+          workerId, 
+          numWorkers, 
+          variables, 
+          settings: { outFile: `${jobId}.mp4`, logProgress: true, puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }}
+        });
         
         const audioFileName = `${jobId}-audio.mp3`;
         const audioFileBuffer = fs.readFileSync(audioFile);
