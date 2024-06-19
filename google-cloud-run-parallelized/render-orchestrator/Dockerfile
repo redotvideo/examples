@@ -53,4 +53,4 @@ RUN apt-get update && apt-get install -y nscd libnss3
 
 RUN ffmpeg -version
 
-CMD service nscd start && npm run serve
+CMD service nscd start && npm start
