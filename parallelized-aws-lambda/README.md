@@ -194,4 +194,4 @@ To test your function, head to the Lambda tab in the AWS console. Now create a t
 
 The function should run and return a url to the rendered video inside your bucket.
 
-**Note: The first time after an image is uploaded to ECR, the function may take longer to execute. You should execute your function more than once to get a better estimate of execution times.**
+**Note: The first time after an image is uploaded to ECR, the function may take longer to execute, but after the first time, executions are faster, even when you have long breaks between executions. You can read more about why this happens [here](https://brooker.co.za/blog/2023/05/23/snapshot-loading.html).**
