@@ -167,13 +167,13 @@ docker push <your-ecr-uri>:latest
 Finally, create a lambda function from your docker image:
 
 ```
-aws lambda create-function 
+aws lambda create-function \
     --function-name my-revideo-render-function \
     --package-type Image \
     --code ImageUri=<your-ecr-uri>:latest \
     --role <your-lambda-role-arn> \
     --timeout 600 \
-    --memory-size 4096
+    --memory-size 4096 \
     --environment Variables={REVIDEO_BUCKET_NAME=your-bucket-name}
 ```
 
