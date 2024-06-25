@@ -33,7 +33,10 @@ async function createVideo(topic: string, voiceName: string){
     await fs.promises.writeFile(`./public/${jobId}-metadata.json`, JSON.stringify(metadata, null, 2));
 
     console.log("Assets generated! Rendering video...")
-    await renderVideo('./vite.config.ts', metadata);
+    await renderVideo({
+      projectFile: './src/project.ts',
+      variables: metadata
+    });
     console.log("Render finished");
 }
 

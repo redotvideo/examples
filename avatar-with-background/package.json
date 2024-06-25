@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "@deepgram/sdk": "^3.3.0",
-    "@revideo/2d": "0.3.0",
-    "@revideo/core": "0.3.0",
-    "@revideo/ffmpeg": "0.3.0",
-    "@revideo/renderer": "0.3.0",
-    "@revideo/vite-plugin": "0.3.0",
+    "@revideo/2d": "0.4.5",
+    "@revideo/core": "0.4.5",
+    "@revideo/ffmpeg": "0.4.5",
+    "@revideo/renderer": "0.4.5",
+    "@revideo/vite-plugin": "0.4.5",
     "dotenv": "^16.4.5",
     "openai": "^4.39.0"
   },
   "devDependencies": {
-    "@revideo/ui": "0.3.0",
+    "@revideo/ui": "0.4.5",
     "typescript": "^5.2.2",
     "vite": "^4.5"
   }

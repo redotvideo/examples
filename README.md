@@ -34,8 +34,6 @@ Below you can find a list of Revideo projects along with a quick summary, focuse
 - **Animation for 1,000 Github Stars:** A fun animation celebrating 1,000 Github stars for Revideo - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
 ### Deployment
 
-- **Revideo on Google Cloud Run:** This example project shows you how you can deploy a Revideo Project on Google Cloud Run for Rendering - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/google-cloud-run))
-
 - **Parallelized Rendering with Cloud Functions:** This example project also uses Cloud Run, but enables faster rendering by distributing the rendering work across a large number of cloud functions - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/google-cloud-run-parallelized))
 
 - **Parallelized Rendering with AWS Lambda:** This example project shows you how you can do parallelized rendering with AWS Lambda - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/parallelized-aws-lambda))

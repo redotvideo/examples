@@ -17,7 +17,6 @@ export default makeScene2D(function* (view) {
         play={true}
         width={'100%'}
         ref={avatarRef}
-        transparency={true}
       />
     </>,
   );
