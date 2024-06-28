@@ -6,7 +6,6 @@ async function render() {
   // This is the main function that renders the video
   const file = await renderVideo({
     projectFile: './src/project.ts',
-    variables: {fill: 'orange'},
     settings: {logProgress: true},
   });
 
