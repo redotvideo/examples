@@ -2,6 +2,11 @@
 
 This project uses [Revideo](https://github.com/redotvideo/revideo) to automatically generate short videos from Reddit Post urls. Here is a (low resolution) example generated from this [Reddit Post](https://www.reddit.com/r/careeradvice/comments/1bn9do3/how_do_i_leave_a_job_i_hate_but_its_comfortable/):
 
+
+
+https://github.com/user-attachments/assets/485df630-7862-4862-affe-7f510279f1fa
+
+
 <br/>
 
 
