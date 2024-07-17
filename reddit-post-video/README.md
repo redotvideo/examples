@@ -5,7 +5,6 @@ This project uses [Revideo](https://github.com/redotvideo/revideo) to automatica
 <br/>
 
 
-https://github.com/redotvideo/reddit-post-video/assets/122226645/0489e6b9-2b49-4717-b4d7-e94a909cbf40
 
 <br/>
 
