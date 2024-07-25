@@ -1,0 +1,25 @@
+{
+  "name": "rive-explanation-docs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build",
+    "render": "tsc && node dist/render.js"
+  },
+  "dependencies": {
+    "@lezer/javascript": "^1.4.17",
+    "@revideo/2d": "^0.5.2",
+    "@revideo/core": "^0.5.2",
+    "@revideo/ffmpeg": "^0.5.2",
+    "@revideo/renderer": "^0.5.2",
+    "@revideo/vite-plugin": "^0.5.2"
+  },
+  "devDependencies": {
+    "@revideo/cli": "^0.5.2",
+    "@revideo/ui": "^0.5.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.5"
+  }
+}
