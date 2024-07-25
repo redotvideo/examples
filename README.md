@@ -32,6 +32,9 @@ Below you can find a list of Revideo projects along with a quick summary, focuse
 - **Youtube shorts with animated subtitles:** This example project generates Youtube Shorts with AI. It generates scripts with ChatGPT, voiceovers with Elevenlabs, and background images with Dall-E. **This project has a heavy emphasis on animating subtitles** - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
 
 - **Animation for 1,000 Github Stars:** A fun animation celebrating 1,000 Github stars for Revideo - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
+
+- **Code Explainer Video for Rive Animations:** An explainer video showcasing how you can use Rive animations inside of Revideo. Worth taking a look at to learn about our `<Code/>` and `<Rive/>` component.
+  
 ### Deployment
 
 - **Parallelized Rendering with Cloud Functions:** This example project also uses Cloud Run, but enables faster rendering by distributing the rendering work across a large number of cloud functions - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/google-cloud-run-parallelized))
