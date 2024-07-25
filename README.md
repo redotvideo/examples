@@ -33,7 +33,7 @@ Below you can find a list of Revideo projects along with a quick summary, focuse
 
 - **Animation for 1,000 Github Stars:** A fun animation celebrating 1,000 Github stars for Revideo - ([project folder](https://github.com/redotvideo/revideo-examples/tree/main/youtube-shorts))
 
-- **Code Explainer Video for Rive Animations:** An explainer video showcasing how you can use Rive animations inside of Revideo. Worth taking a look at to learn about our `<Code/>` and `<Rive/>` component.
+- **Code Explainer Video for Rive Animations:** An explainer video showcasing how you can use Rive animations inside of Revideo. Worth taking a look at to learn about our `<Code/>` and `<Rive/>` component. ([project folder](https://github.com/redotvideo/examples/tree/main/rive-explanation-video))
   
 ### Deployment
 
