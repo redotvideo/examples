@@ -1,0 +1,25 @@
+{
+  "name": "3d-testing",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build",
+    "render": "tsc && node dist/render.js"
+  },
+  "dependencies": {
+    "@revideo/2d": "0.5.4",
+    "@revideo/core": "^0.5.4",
+    "@revideo/renderer": "^0.5.4",
+    "@revideo/ffmpeg": "^0.5.4",
+    "three": "^0.167.1"
+  },
+  "devDependencies": {
+    "@revideo/ui": "^0.5.4",
+    "@revideo/vite-plugin": "^0.5.4",
+    "@types/three": "^0.167.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.0.0"
+  }
+}
