@@ -21,7 +21,7 @@
   "devDependencies": {
     "@revideo/ui": "^0.4.8",
     "@types/yargs": "^17.0.32",
-    "typescript": "^5.2.2",
+    "typescript": "5.5.4",
     "vite": "^4.5"
   }
 }

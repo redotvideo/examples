@@ -23,7 +23,7 @@
     "@types/uuid": "^9.0.8",
     "express": "^4.19.2",
     "puppeteer": "^22.9.0",
-    "typescript": "^5.2.2",
+    "typescript": "5.5.4",
     "uuid": "^9.0.1",
     "vite": "^4.5"
   }

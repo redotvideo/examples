@@ -22,7 +22,7 @@
   "devDependencies": {
     "@revideo/cli": "^0.4.6",
     "@revideo/ui": "0.4.6",
-    "typescript": "^5.2.2",
+    "typescript": "5.5.4",
     "vite": "^4.5"
   }
 }
