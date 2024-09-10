@@ -23,7 +23,7 @@ export const handler = async (event: any, context: any) => {
         workerId: workerId,
         numWorkers: numWorkers,
         variables: variables,
-        settings: { logProgress: true, viteBasePort: 5000, outDir: "/tmp/output", viteConfig: { cacheDir: "/tmp/.vite"}, puppeteer: { args: chromium.args, headless: chromium.headless }}
+        settings: { logProgress: true, viteBasePort: 5000, outDir: "/tmp/output", viteConfig: { cacheDir: "/tmp/.vite"}, puppeteer: { args: chromium.args, headless: chromium.headless, executablePath: await chromium.executablePath() }}
       });  
   
       await Promise.all([uploadFileToBucket(audioFile, `${jobId}-audio-${workerId}.wav`), uploadFileToBucket(videoFile, `${jobId}-video-${workerId}.mp4`)]);
