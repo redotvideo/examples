@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "@lezer/javascript": "^1.4.17",
-    "@revideo/2d": "^0.5.2",
-    "@revideo/core": "^0.5.2",
-    "@revideo/ffmpeg": "^0.5.2",
-    "@revideo/renderer": "^0.5.2",
-    "@revideo/vite-plugin": "^0.5.2"
+    "@revideo/2d": "0.5.9",
+    "@revideo/core": "0.5.9",
+    "@revideo/ffmpeg": "0.5.9",
+    "@revideo/renderer": "0.5.9",
+    "@revideo/vite-plugin": "0.5.9"
   },
   "devDependencies": {
-    "@revideo/cli": "^0.5.2",
-    "@revideo/ui": "^0.5.2",
+    "@revideo/cli": "0.5.9",
+    "@revideo/ui": "0.5.9",
     "typescript": "5.5.4",
     "vite": "^4.5"
   }

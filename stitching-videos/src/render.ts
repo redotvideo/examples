@@ -17,7 +17,8 @@ async function render() {
           start: 2,
           duration: 10
         }
-      ]}
+      ]},
+      settings: {logProgress: true}
     });
 
   console.log(`Rendered video to ${file}`);
