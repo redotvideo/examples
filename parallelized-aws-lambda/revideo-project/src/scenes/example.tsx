@@ -10,6 +10,7 @@ export default makeScene2D(function* (view) {
         src={'https://revideo-example-assets.s3.amazonaws.com/beach-4.mp4'}
         size={['100%', '100%']}
         play={true}
+        decoder={"ffmpeg"} // ffmpeg is more reliable than webcodecs decoder
       />
       <Audio
         src={'https://revideo-example-assets.s3.amazonaws.com/chill-beat-2.mp3'}

@@ -194,6 +194,7 @@ function* highlightCurrentWord(view: View2D, currentBatch: Word[], wordRefs: Ref
     const word = currentBatch[i];
     const originalColor = wordRefs[i]().fill();
     nextWordStart = currentBatch[i+1]?.start - word.end || 0;
+    wordRefs[i]().text(wordRefs[i]().text());
     wordRefs[i]().fill(wordColor);
 
     const backgroundRef = createRef<Rect>();
@@ -202,6 +203,7 @@ function* highlightCurrentWord(view: View2D, currentBatch: Word[], wordRefs: Ref
     }
 
     yield* waitFor(word.end-word.start);
+    wordRefs[i]().text(wordRefs[i]().text());
     wordRefs[i]().fill(originalColor);
 
     if(backgroundColor){
