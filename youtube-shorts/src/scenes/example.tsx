@@ -1,4 +1,4 @@
-import {Audio, Img, makeScene2D, Txt, View2D, Rect} from '@revideo/2d';
+import {Audio, Img, makeScene2D, Txt, Rect, Layout} from '@revideo/2d';
 import {all, createRef, waitFor, useScene, Reference, createSignal} from '@revideo/core';
 
 interface Word {
@@ -49,8 +49,19 @@ export default makeScene2D(function* (view) {
 
   const duration = words[words.length-1].end + 0.5;
 
+  const imageContainer = createRef<Layout>();
+  const textContainer = createRef<Layout>();
+
   yield view.add(
     <>
+      <Layout
+        size={"100%"}
+        ref={imageContainer}
+      />
+      <Layout
+        size={"100%"}
+        ref={textContainer}
+      />
       <Audio
         src={audioUrl}
         play={true}
@@ -64,19 +75,19 @@ export default makeScene2D(function* (view) {
   );
 
   yield* all(
-    displayImages(view, images, duration),
+    displayImages(imageContainer, images, duration),
     displayWords(
-      view,
+      textContainer,
       words,
       textSettings
     )
   )
 });
 
-function* displayImages(view: View2D, images: string[], totalDuration: number){
+function* displayImages(container: Reference<Layout>, images: string[], totalDuration: number){
   for(const img of images){
     const ref = createRef<Img>();
-    view.add(<Img 
+    container().add(<Img 
       src={img}
       size={["100%", "100%"]}
       ref={ref}
@@ -87,7 +98,7 @@ function* displayImages(view: View2D, images: string[], totalDuration: number){
   }
 }
 
-function* displayWords(view: View2D, words: Word[], settings: captionSettings){
+function* displayWords(container: Reference<Layout>, words: Word[], settings: captionSettings){
   let waitBefore = words[0].start;
 
   for (let i = 0; i < words.length; i += settings.numSimultaneousWords) {
@@ -101,7 +112,7 @@ function* displayWords(view: View2D, words: Word[], settings: captionSettings){
 
     if(settings.stream){
       let nextWordStart = 0;
-      yield view.add(<Txt width={`${settings.textBoxWidthInPercent}%`} textWrap={true} zIndex={2} textAlign={settings.textAlign} ref={textRef}/>);
+      yield container().add(<Txt width={`${settings.textBoxWidthInPercent}%`} textWrap={true} zIndex={2} textAlign={settings.textAlign} ref={textRef}/>);
 
       for(let j = 0; j < currentBatch.length; j++){
         const word = currentBatch[j];
@@ -130,7 +141,7 @@ function* displayWords(view: View2D, words: Word[], settings: captionSettings){
           </Txt>
         );
         textRef().add(<Txt fontSize={settings.fontSize}>{optionalSpace}</Txt>);
-        view.add(<Rect fill={settings.currentWordBackgroundColor} zIndex={1} size={wordRef().size} position={wordRef().position} radius={10} padding={10} ref={backgroundRef} />);
+        container().add(<Rect fill={settings.currentWordBackgroundColor} zIndex={1} size={wordRef().size} position={wordRef().position} radius={10} padding={10} ref={backgroundRef} />);
         yield* all(waitFor(word.end-word.start), opacitySignal(1, Math.min((word.end-word.start)*0.5, 0.1)));
         wordRef().fill(settings.textColor);
         backgroundRef().remove();
@@ -139,7 +150,7 @@ function* displayWords(view: View2D, words: Word[], settings: captionSettings){
       textRef().remove();
 
     } else {
-      yield view.add(<Txt width={`${settings.textBoxWidthInPercent}%`} textAlign={settings.textAlign} ref={textRef} textWrap={true} zIndex={2}/>);
+      yield container().add(<Txt width={`${settings.textBoxWidthInPercent}%`} textAlign={settings.textAlign} ref={textRef} textWrap={true} zIndex={2}/>);
 
       const wordRefs = [];
       const opacitySignal = createSignal(settings.fadeInAnimation ? 0.5 : 1);
@@ -177,7 +188,7 @@ function* displayWords(view: View2D, words: Word[], settings: captionSettings){
 
       yield* all(
         opacitySignal(1, Math.min(0.1, (currentBatch[0].end-currentBatch[0].start)*0.5)),
-        highlightCurrentWord(view, currentBatch, wordRefs, settings.currentWordColor, settings.currentWordBackgroundColor),
+        highlightCurrentWord(container, currentBatch, wordRefs, settings.currentWordColor, settings.currentWordBackgroundColor),
         waitFor(currentBatch[currentBatch.length-1].end - currentBatch[0].start + waitAfter), 
       );
       textRef().remove();
@@ -186,7 +197,7 @@ function* displayWords(view: View2D, words: Word[], settings: captionSettings){
   }
 }
 
-function* highlightCurrentWord(view: View2D, currentBatch: Word[], wordRefs: Reference<Txt>[], wordColor: string, backgroundColor: string){
+function* highlightCurrentWord(container: Reference<Layout>, currentBatch: Word[], wordRefs: Reference<Txt>[], wordColor: string, backgroundColor: string){
   let nextWordStart = 0;
 
   for(let i = 0; i < currentBatch.length; i++){
@@ -199,7 +210,7 @@ function* highlightCurrentWord(view: View2D, currentBatch: Word[], wordRefs: Ref
 
     const backgroundRef = createRef<Rect>();
     if(backgroundColor){
-      view.add(<Rect fill={backgroundColor} zIndex={1} size={wordRefs[i]().size} position={wordRefs[i]().position} radius={10} padding={10} ref={backgroundRef} />);
+      container().add(<Rect fill={backgroundColor} zIndex={1} size={wordRefs[i]().size} position={wordRefs[i]().position} radius={10} padding={10} ref={backgroundRef} />);
     }
 
     yield* waitFor(word.end-word.start);
