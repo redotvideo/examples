@@ -1,3 +1,4 @@
+/** @jsxImportSource @revideo/2d/lib */
 import {Gradient, Img, Layout, Line, Rect, Spline, Txt, makeScene2D} from '@revideo/2d';
 import {all, createRef, useScene, Vector2, waitFor} from '@revideo/core';
 
@@ -46,7 +47,7 @@ const exampleData = [
 const exampleRepoName = 'redotvideo/revideo';
 const exampleRepoImage = 'https://avatars.githubusercontent.com/u/133898679';
 
-export default makeScene2D(function* (view) {
+export default makeScene2D('scene 1', function* (view) {
 	// Get variables
 	const repoName = useScene().variables.get('repoName', exampleRepoName);
 	const repoImage = useScene().variables.get('repoImage', exampleRepoImage);
@@ -93,7 +94,7 @@ export default makeScene2D(function* (view) {
 	const rectRef = createRef<Rect>();
 
 	// Add elements to the view
-	yield view.add(
+	view.add(
 		<>
 			<>
 				<Line points={linePoints} lineWidth={30} stroke={'#3EAC45'} />

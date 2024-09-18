@@ -1,10 +1,11 @@
 'use client';
 
-import {Player} from '@revideo/player-react';
 import {getGithubRepositoryInfo} from './actions';
 import {useState} from 'react';
 import {LoaderCircle} from 'lucide-react';
 import {parseStream} from '../utils/parse';
+import {Player} from '@revideo/player-react';
+import project from '../revideo/project';
 
 function Button({
 	children,
@@ -144,15 +145,22 @@ export default function Home() {
 				<div>
 					<div className="rounded-lg overflow-hidden">
 						{/* You can find the scene code inside revideo/src/scenes/example.tsx */}
-						<Player
-							src="http://localhost:4000/player/"
-							controls={true}
-							variables={{
-								data: stargazerTimes.length > 0 ? stargazerTimes : undefined,
-								repoName: repoName ? repoName : undefined,
-								repoImage: repoImage ? repoImage : undefined,
+						<form
+							onSubmit={(e) => {
+								e.preventDefault();
+								console.log('form submitted');
 							}}
-						/>
+						>
+							<Player
+								project={project}
+								controls={true}
+								variables={{
+									data: stargazerTimes.length > 0 ? stargazerTimes : undefined,
+									repoName: repoName ? repoName : undefined,
+									repoImage: repoImage ? repoImage : undefined,
+								}}
+							/>
+						</form>
 					</div>
 				</div>
 				<div className="flex gap-x-4">

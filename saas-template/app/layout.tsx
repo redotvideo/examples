@@ -16,9 +16,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="stylesheet" href="http://localhost:4000/player/project.css" />
-			</head>
 			<body className={inter.className}>{children}</body>
 		</html>
 	);
