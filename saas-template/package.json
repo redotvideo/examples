@@ -10,6 +10,9 @@
 	},
 	"dependencies": {
 		"@radix-ui/react-navigation-menu": "^1.1.4",
+		"@revideo/player-react": "0.5.9",
+		"@revideo/core": "0.5.9",
+		"@revideo/2d": "0.5.9",
 		"class-variance-authority": "^0.7.0",
 		"lucide-react": "^0.378.0",
 		"next": "14.2.3",
@@ -23,6 +26,7 @@
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
+		"@revideo/cli": "0.5.9",
 		"autoprefixer": "^10.4.19",
 		"eslint": "^8",
 		"eslint-config-next": "14.2.3",
