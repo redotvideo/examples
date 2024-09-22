@@ -9,19 +9,19 @@
     "render": "tsc && node dist/render.js"
   },
   "dependencies": {
-    "@revideo/2d": "0.5.9",
-    "@revideo/core": "0.5.9",
-    "@revideo/ffmpeg": "0.5.9",
-    "@revideo/renderer": "0.5.9",
-    "@revideo/vite-plugin": "0.5.9",
+    "@revideo/2d": "0.5.10",
+    "@revideo/core": "0.5.10",
+    "@revideo/ffmpeg": "0.5.10",
+    "@revideo/renderer": "0.5.10",
+    "@revideo/vite-plugin": "0.5.10",
     "@sparticuz/chromium": "^123.0.1",
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1642.0",
     "ffmpeg-static": "^5.2.0"
   },
   "devDependencies": {
-    "@revideo/cli": "0.5.9",
-    "@revideo/ui": "0.5.9",
+    "@revideo/cli": "0.5.10",
+    "@revideo/ui": "0.5.10",
     "typescript": "5.5.4",
     "vite": "^4.5"
   }

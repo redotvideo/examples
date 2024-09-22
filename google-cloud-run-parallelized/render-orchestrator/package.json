@@ -7,9 +7,9 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.11.0",
-    "@revideo/2d": "0.5.9",
-    "@revideo/core": "0.5.9",
-    "@revideo/ffmpeg": "0.5.9",
+    "@revideo/2d": "0.5.10",
+    "@revideo/core": "0.5.10",
+    "@revideo/ffmpeg": "0.5.10",
     "express": "^4.19.2",
     "uuid": "^9.0.1"
   },
