@@ -5,4 +5,5 @@ dist
 !public/.gitkeep
 output
 .DS_store
-.cache
+.next
+update-versions.ts

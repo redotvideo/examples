@@ -8,7 +8,11 @@ AWS.config.update({ region: 'us-east-1' });
 chromium.setHeadlessMode = true;
 
 const s3 = new AWS.S3();
-const lambda = new AWS.Lambda();
+const lambda = new AWS.Lambda({
+  httpOptions: {
+    timeout: 900000, // 15 min timeout
+  },
+});
 
 export const handler = async (event: any, context: any) => {
   const { jobType, jobId } = event; 
@@ -23,7 +27,16 @@ export const handler = async (event: any, context: any) => {
         workerId: workerId,
         numWorkers: numWorkers,
         variables: variables,
-        settings: { logProgress: true, viteBasePort: 5000, outDir: "/tmp/output", viteConfig: { cacheDir: "/tmp/.vite"}, puppeteer: { args: chromium.args, headless: chromium.headless, executablePath: await chromium.executablePath() }}
+        settings: { logProgress: true, viteBasePort: 5000, outDir: "/tmp/output", viteConfig: { cacheDir: "/tmp/.vite"}, puppeteer: { 
+          headless: chromium.headless, 
+          executablePath: await chromium.executablePath(), 
+          args: chromium.args.filter(arg => 
+            !arg.startsWith('--single-process') &&
+            !arg.startsWith('--use-gl=angle') &&
+            !arg.startsWith('--use-angle=swiftshader') &&
+            !arg.startsWith('--disable-features=')
+          )
+       }}
       });  
   
       await Promise.all([uploadFileToBucket(audioFile, `${jobId}-audio-${workerId}.wav`), uploadFileToBucket(videoFile, `${jobId}-video-${workerId}.mp4`)]);

@@ -17,6 +17,7 @@ export default makeScene2D(function* (view) {
         play={true}
         width={'100%'}
         ref={avatarRef}
+        decoder={"slow"} // we need to use the slow decoder to support transparency
       />
     </>,
   );

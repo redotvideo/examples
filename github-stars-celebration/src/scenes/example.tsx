@@ -29,13 +29,13 @@ export default makeScene2D(function* (view) {
 
   yield* rocketRef().position([1000, -600], 2, easeInCubic);
 
-  view.add(
+  yield view.add(
     <Txt fontFamily={"Lexend"} fill="white" ref={txtRef} textAlign={"center"} fontSize={60}></Txt>
   )
 
   yield* txtRef().text("Thank you for 1,000 Github stars!", 2);
 
-  view.add(
+  yield view.add(
     <Img
       width={'1%'}
       ref={logoRef}
