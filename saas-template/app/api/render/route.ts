@@ -4,6 +4,7 @@ async function getResponse(body: string) {
 	return await fetch(RENDER_URL, {
 		method: 'POST',
 		headers: {
+			// eslint-disable-next-line @typescript-eslint/naming-convention
 			'Content-Type': 'application/json',
 		},
 		body,

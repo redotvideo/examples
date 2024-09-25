@@ -5,6 +5,7 @@ import {getGithubRepositoryInfo} from './actions';
 import {useState} from 'react';
 import {LoaderCircle} from 'lucide-react';
 import {parseStream} from '../utils/parse';
+import project from '@/revideo/project';
 
 function Button({
 	children,
@@ -27,44 +28,18 @@ function Button({
 	);
 }
 
-export default function Home() {
-	const [repoName, setRepoName] = useState<string>('');
-	const [repoImage, setRepoImage] = useState<string | null>();
-	const [stargazerTimes, setStargazerTimes] = useState<number[]>([]);
-
-	const [githubLoading, setGithubLoading] = useState(false);
-	const [needsKey, setNeedsKey] = useState(false);
-	const [key, setKey] = useState('');
-	const [error, setError] = useState<string | null>();
-
+function RenderComponent({
+	stargazerTimes,
+	repoName,
+	repoImage,
+}: {
+	stargazerTimes: number[];
+	repoName: string;
+	repoImage: string | null | undefined;
+}) {
 	const [renderLoading, setRenderLoading] = useState(false);
 	const [progress, setProgress] = useState(0);
 	const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
-
-	/**
-	 * Get information about the repository from Github.
-	 * @param repoName
-	 * @param key
-	 * @returns
-	 */
-	async function fetchInformation(repoName: `${string}/${string}`, key: string) {
-		setGithubLoading(true);
-		const response = await getGithubRepositoryInfo(repoName, key ?? undefined);
-		setGithubLoading(false);
-
-		if (response.status === 'rate-limit') {
-			setNeedsKey(true);
-			return;
-		}
-
-		if (response.status === 'error') {
-			setError('Failed to fetch repository information from Github.');
-			return;
-		}
-
-		setStargazerTimes(response.stargazerTimes);
-		setRepoImage(response.repoImage);
-	}
 
 	/**
 	 * Render the video.
@@ -74,6 +49,7 @@ export default function Home() {
 		const res = await fetch('/api/render', {
 			method: 'POST',
 			headers: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
@@ -94,6 +70,68 @@ export default function Home() {
 		const downloadUrl = await parseStream(res.body!.getReader(), (p) => setProgress(p));
 		setRenderLoading(false);
 		setDownloadUrl(downloadUrl);
+	}
+
+	return (
+		<div className="flex gap-x-4">
+			{/* Progress bar */}
+			<div className="text-sm flex-1 bg-gray-100 rounded-md overflow-hidden">
+				<div
+					className="text-gray-600 bg-gray-400 h-full flex items-center px-4 transition-all transition-200"
+					style={{
+						width: `${Math.round(progress * 100)}%`,
+					}}
+				>
+					{Math.round(progress * 100)}%
+				</div>
+			</div>
+			{downloadUrl ? (
+				<a
+					href={downloadUrl}
+					download
+					className="text-sm flex items-center gap-x-2 rounded-md p-2 bg-green-200 text-gray-700 hover:bg-gray-300"
+				>
+					Download video
+				</a>
+			) : (
+				<Button onClick={() => render()} loading={renderLoading}>
+					Render video
+				</Button>
+			)}
+		</div>
+	);
+}
+
+export default function Home() {
+	const [repoName, setRepoName] = useState<string>('');
+	const [repoImage, setRepoImage] = useState<string | null>();
+	const [stargazerTimes, setStargazerTimes] = useState<number[]>([]);
+
+	const [githubLoading, setGithubLoading] = useState(false);
+	const [needsKey, setNeedsKey] = useState(false);
+	const [key, setKey] = useState('');
+	const [error, setError] = useState<string | null>();
+
+	/**
+	 * Get information about the repository from Github.
+	 */
+	async function fetchInformation(repoName: `${string}/${string}`, key: string) {
+		setGithubLoading(true);
+		const response = await getGithubRepositoryInfo(repoName, key ?? undefined);
+		setGithubLoading(false);
+
+		if (response.status === 'rate-limit') {
+			setNeedsKey(true);
+			return;
+		}
+
+		if (response.status === 'error') {
+			setError('Failed to fetch repository information from Github.');
+			return;
+		}
+
+		setStargazerTimes(response.stargazerTimes);
+		setRepoImage(response.repoImage);
 	}
 
 	return (
@@ -145,7 +183,7 @@ export default function Home() {
 					<div className="rounded-lg overflow-hidden">
 						{/* You can find the scene code inside revideo/src/scenes/example.tsx */}
 						<Player
-							src="http://localhost:4000/player/"
+							project={project}
 							controls={true}
 							variables={{
 								data: stargazerTimes.length > 0 ? stargazerTimes : undefined,
@@ -155,32 +193,11 @@ export default function Home() {
 						/>
 					</div>
 				</div>
-				<div className="flex gap-x-4">
-					{/* Progress bar */}
-					<div className="text-sm flex-1 bg-gray-100 rounded-md overflow-hidden">
-						<div
-							className="text-gray-600 bg-gray-400 h-full flex items-center px-4 transition-all transition-200"
-							style={{
-								width: `${Math.round(progress * 100)}%`,
-							}}
-						>
-							{Math.round(progress * 100)}%
-						</div>
-					</div>
-					{downloadUrl ? (
-						<a
-							href={downloadUrl}
-							download
-							className="text-sm flex items-center gap-x-2 rounded-md p-2 bg-green-200 text-gray-700 hover:bg-gray-300"
-						>
-							Download video
-						</a>
-					) : (
-						<Button onClick={() => render()} loading={renderLoading}>
-							Render video
-						</Button>
-					)}
-				</div>
+				<RenderComponent
+					stargazerTimes={stargazerTimes}
+					repoName={repoName}
+					repoImage={repoImage}
+				/>
 			</div>
 		</>
 	);

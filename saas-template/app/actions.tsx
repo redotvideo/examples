@@ -18,6 +18,7 @@ async function getStargazerTimesForPage(
 		`https://api.github.com/repos/${repo}/stargazers?page=${page}&per_page=${PER_PAGE}`,
 		{
 			headers: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
 				Accept: 'application/vnd.github.v3.star+json',
 				...headers,
 			},
