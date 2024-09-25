@@ -1,7 +1,12 @@
-import {Audio, Img, Video, makeScene2D} from '@revideo/2d';
+import {makeProject, Vector2} from '@revideo/core';
+
+import {Audio, Img, makeScene2D, Video} from '@revideo/2d';
 import {all, chain, createRef, waitFor} from '@revideo/core';
 
-export default makeScene2D(function* (view) {
+/**
+ * The Revideo scene
+ */
+const scene = makeScene2D('scene', function* (view) {
   const logoRef = createRef<Img>();
 
   yield view.add(
@@ -35,4 +40,17 @@ export default makeScene2D(function* (view) {
     all(logoRef().scale(40, 2), logoRef().rotation(360, 2)),
     logoRef().scale(60, 1),
   );
+});
+
+/**
+ * The final revideo project
+ */
+export default makeProject({
+  scenes: [scene],
+  settings: {
+    // Example settings:
+    shared: {
+      size: new Vector2(1920, 1080),
+    },
+  },
 });
