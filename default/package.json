@@ -3,9 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
-    "serve": "vite",
-    "build": "tsc && vite build",
+    "start": "revideo editor --projectFile ./src/project.tsx",
     "render": "tsc && node dist/render.js"
   },
   "dependencies": {

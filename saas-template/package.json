@@ -7,8 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"revideo": "revideo serve --projectFile ./revideo/project.ts",
-		"editor": "revideo editor --projectFile ./revideo/project.ts"
+		"revideo:serve": "revideo serve --projectFile ./revideo/project.ts",
+		"revideo:editor": "revideo editor --projectFile ./revideo/project.ts"
 	},
 	"dependencies": {
 		"@radix-ui/react-navigation-menu": "^1.1.4",
@@ -26,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@revideo/cli": "^0.6.0",
+		"@revideo/ui": "^0.6.0",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
