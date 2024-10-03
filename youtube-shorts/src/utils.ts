@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI from 'openai/index.mjs';
 import axios from "axios";
 import * as fs from "fs";
 import { createClient } from "@deepgram/sdk";

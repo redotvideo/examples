@@ -6,5 +6,6 @@
     "outDir": "dist",
     "module": "CommonJS",
     "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }

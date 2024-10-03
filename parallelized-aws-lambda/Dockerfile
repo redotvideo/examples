@@ -10,8 +10,6 @@
 
    ENV ROLLUP_CACHE=/tmp/rollup_cache
 
-   RUN npm run build
-
    ENV FFMPEG_PATH=/var/task/node_modules/@ffmpeg-installer/linux-x64/ffmpeg
 
    ENV HOME=/tmp

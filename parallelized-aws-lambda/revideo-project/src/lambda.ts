@@ -23,7 +23,7 @@ export const handler = async (event: any, context: any) => {
       const { workerId, numWorkers, variables } = event;
 
       const { audioFile, videoFile } = await renderPartialVideo({
-        projectFile: './src/project.ts',
+        projectFile: './src/project.tsx',
         workerId: workerId,
         numWorkers: numWorkers,
         variables: variables,

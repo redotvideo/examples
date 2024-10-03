@@ -1,24 +1,20 @@
 {
-  "name": "rive-explanation-docs",
+  "name": "revideo-app",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
-    "serve": "vite",
-    "build": "tsc && vite build",
+    "start": "revideo editor --projectFile ./src/project.tsx",
     "render": "tsc && node dist/render.js"
   },
   "dependencies": {
-    "@lezer/javascript": "^1.4.17",
-    "@revideo/2d": "0.5.10",
-    "@revideo/core": "0.5.10",
-    "@revideo/ffmpeg": "0.5.10",
-    "@revideo/renderer": "0.5.10",
-    "@revideo/vite-plugin": "0.5.10"
+    "@lezer/javascript": "^1.4.18",
+    "@revideo/2d": "0.6.0",
+    "@revideo/core": "0.6.0",
+    "@revideo/renderer": "0.6.0"
   },
   "devDependencies": {
-    "@revideo/cli": "0.5.10",
-    "@revideo/ui": "0.5.10",
+    "@revideo/cli": "0.6.0",
+    "@revideo/ui": "0.6.0",
     "typescript": "5.5.4",
     "vite": "^4.5"
   }
