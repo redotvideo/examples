@@ -4,7 +4,6 @@ import chromium from '@sparticuz/chromium';
 import * as AWS from "aws-sdk";
 import * as fs from "fs";
 
-AWS.config.update({ region: 'us-east-1' });
 chromium.setHeadlessMode = true;
 
 const s3 = new AWS.S3();
@@ -35,7 +34,7 @@ export const handler = async (event: any, context: any) => {
             !arg.startsWith('--use-gl=angle') &&
             !arg.startsWith('--use-angle=swiftshader') &&
             !arg.startsWith('--disable-features=')
-          )
+          ),
        }}
       });  
   
