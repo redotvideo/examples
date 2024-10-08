@@ -5,24 +5,22 @@ project bootstrapped with `npm init @revideo@latest`.
 
 ## Getting Started
 
-First, install the dependencies both in the next/ and the revideo/ directories:
+First, install the dependencies:
 
 ```bash
-(cd next && npm install) &&
-(cd revideo && npm install)
+npm install
 ```
 
-Then, serve the Revideo project using the CLI:
+This project comes with the following commands:
 
-```bash
-(cd revideo && npx revideo serve)
-```
+- `npm run dev` - Start the Next.js development server
+- `npm run build` - Build the Next.js project
+- `npm run start` - Start the Next.js production server
+- `npm run revideo:serve` - Start the Revideo render api (required for the render button on the Next.js page to work)
+- `npm run revideo:editor` - Start the Revideo editor, which you can use to inspect and preview your Revideo code
 
-Now you can start your NextJS app using the following command:
+## Building with Revideo
 
-```bash
-(cd next && npm run dev)
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the
-result. Happy developing!
+If you want to see what's possible with Revideo, check out the other templates
+in the [Revideo Examples repository](https://github.com/redotvideo/examples), or
+the [Revideo documentation](https://docs.re.video).

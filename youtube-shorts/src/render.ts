@@ -1,12 +1,15 @@
 import {renderVideo} from '@revideo/renderer';
-import metadata from './metadata.json';
 
-async function render(){
-    await renderVideo({
-      projectFile: './src/project.ts',
-      variables: metadata,
-      settings: {logProgress: true}
-    });
+async function render() {
+  console.log('Rendering video...');
+
+  // This is the main function that renders the video
+  const file = await renderVideo({
+    projectFile: './src/project.tsx',
+    settings: {logProgress: true},
+  });
+
+  console.log(`Rendered video to ${file}`);
 }
 
 render();
