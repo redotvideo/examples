@@ -1,5 +1,5 @@
 import {Audio, Img, makeScene2D, Txt, Rect, Layout} from '@revideo/2d';
-import {all, createRef, waitFor, useScene, Reference, createSignal, makeProject, Vector2} from '@revideo/core';
+import {all, createRef, waitFor, useScene, Reference, createSignal, makeProject} from '@revideo/core';
 import metadata from './metadata.json';
 import './global.css';
 
@@ -235,7 +235,7 @@ export default makeProject({
   variables: metadata,
   settings: {
     shared: {
-      size: new Vector2(1080, 1920),
+      size: {x: 1920, y: 1080},
     },
   },
 });

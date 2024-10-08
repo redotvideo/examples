@@ -1,4 +1,4 @@
-import { waitFor, createRef, makeProject, all, Vector2, Reference, chain } from '@revideo/core';
+import { waitFor, createRef, makeProject, all, Reference, chain } from '@revideo/core';
 import {
   Img, 
   makeScene2D,
@@ -228,7 +228,7 @@ export default makeProject({
   settings: {
     // Example settings:
     shared: {
-      size: new Vector2(1920, 1080),
+      size: {x: 1920, 1080},
     },
   },
 });

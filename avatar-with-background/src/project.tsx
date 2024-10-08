@@ -38,7 +38,7 @@ export default makeProject({
   settings: {
     // Example settings:
     shared: {
-      size: new Vector2(1080, 1080),
+      size: {x: 1080, y: 1080},
     },
   },
 });
