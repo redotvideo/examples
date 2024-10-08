@@ -1,6 +1,6 @@
 import {Three} from './components/Three';
 import { makeScene2D, Txt } from '@revideo/2d';
-import { makeProject, Vector2, tween, waitFor, delay, createRef, all, chain, linear} from '@revideo/core';
+import { makeProject, tween, waitFor, delay, createRef, all, chain, linear} from '@revideo/core';
 import * as THREE from 'three';
 import './global.css';
 
@@ -99,7 +99,7 @@ export default makeProject({
   settings: {
     // Example settings:
     shared: {
-      size: new Vector2(1920, 1080),
+      size: {x: 1920, y: 1080}
     },
   },
 });
