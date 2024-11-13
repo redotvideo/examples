@@ -267,6 +267,7 @@ Note down your access key id and secret access key as you will need them later.
         "Sid": "ECRPermissions",
         "Effect": "Allow",
 		"Action": [
+				"ecr:CreateRepository",
 				"ecr:GetAuthorizationToken",
 				"ecr:BatchCheckLayerAvailability",
 				"ecr:GetDownloadUrlForLayer",
