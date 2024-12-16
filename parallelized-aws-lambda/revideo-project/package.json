@@ -7,18 +7,18 @@
     "render": "tsc && node dist/render.js"
   },
   "dependencies": {
-    "@revideo/2d": "0.10.2",
-    "@revideo/core": "0.10.2",
-    "@revideo/ffmpeg": "0.10.2",
-    "@revideo/renderer": "0.10.2",
+    "@revideo/2d": "0.10.3",
+    "@revideo/core": "0.10.3",
+    "@revideo/ffmpeg": "0.10.3",
+    "@revideo/renderer": "0.10.3",
     "@sparticuz/chromium": "^123.0.1",
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1642.0",
     "ffmpeg-static": "^5.2.0"
   },
   "devDependencies": {
-    "@revideo/cli": "0.10.2",
-    "@revideo/ui": "0.10.2",
+    "@revideo/cli": "0.10.3",
+    "@revideo/ui": "0.10.3",
     "@types/chroma-js": "^2.4.4",
     "typescript": "5.5.4",
     "vite": "4.5"
