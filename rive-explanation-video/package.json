@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@lezer/javascript": "^1.4.18",
-    "@revideo/2d": "0.10.3",
-    "@revideo/core": "0.10.3",
-    "@revideo/renderer": "0.10.3"
+    "@revideo/2d": "0.10.4",
+    "@revideo/core": "0.10.4",
+    "@revideo/renderer": "0.10.4"
   },
   "devDependencies": {
-    "@revideo/cli": "0.10.3",
-    "@revideo/ui": "0.10.3",
+    "@revideo/cli": "0.10.4",
+    "@revideo/ui": "0.10.4",
     "typescript": "5.5.4",
     "vite": "^4.5"
   }
