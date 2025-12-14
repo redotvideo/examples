@@ -235,7 +235,7 @@ export default makeProject({
   variables: metadata,
   settings: {
     shared: {
-      size: {x: 1920, y: 1080},
+      size: {x: 1080, y: 1920},
     },
   },
 });
