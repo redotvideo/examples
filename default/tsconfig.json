@@ -5,6 +5,7 @@
     "noEmit": false,
     "outDir": "dist",
     "module": "CommonJS",
+    "moduleResolution": "node",
     "skipLibCheck": true
   }
 }
